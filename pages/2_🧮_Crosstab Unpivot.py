@@ -32,6 +32,6 @@ if data_str:
     id_vars = st.multiselect("ID columns", df.columns)
     value_vars = st.multiselect('Value columns', df.columns)
     if id_vars and value_vars:
-        df_unpivot = pd.melt(df, id_vars=id_vars.split(';'), value_vars=value_vars.split(';'))
+        df_unpivot = pd.melt(df, id_vars=id_vars, value_vars=value_vars)
         st.write('Unpivoted')
         st.dataframe(df_unpivot)
