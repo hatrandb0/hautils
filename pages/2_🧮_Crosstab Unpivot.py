@@ -21,6 +21,8 @@ dim = st.selectbox(
     delimiters.keys()
     )
 
+
+st.write("Copy data from your file or sample (here)[https://docs.google.com/spreadsheets/d/17RDKTnwQuWd-kL7YdR2XZ1dvcj5nSEdhOrz3F02Z9No/edit#gid=0]")
 with st.expander("Paste your data here", expanded=True):
     data_str = st.text_area("Paste data below", label_visibility="collapsed")
 
