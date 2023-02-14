@@ -8,9 +8,28 @@ st.set_page_config(
     page_icon="🧮",
 )
 
+delimiters = {
+    'Tab': '\t',
+    'Comma (,)': ',',
+    'Semi-colon (;)': ';'
 
-read_clipboard = st.button("Paste from clipboard")
+}
 
-if read_clipboard:
-    df = pd.read_clipboard()
+
+dim = st.selectbox(
+    'Column delimiter',
+    delimiters.keys()
+    )
+
+with st.expander("Paste your data here", expanded=True):
+    data_str = st.text_area("Paste data below", label_visibility="collapsed")
+
+
+if data_str:
+    df = pd.read_csv(StringIO(data_str), delimiter=delimiters[dim])
     st.write(df)
+    id_vars = st.text_input("ID columns")
+    value_vars = st.text_input('Value columns')
+    if id_vars and value_vars:
+        df_unpivot = pd.melt(df, id_vars=id_vars.split(';'), value_vars=value_vars.split(';'))
+        st.write(df_unpivot)
