@@ -35,9 +35,8 @@ if data_str:
     df = pd.read_csv(StringIO(data_str), delimiter=delimiters[dim])
     st.write("Original crosstab")
     st.dataframe(df)
-    with st.sidebar()
-        id_vars = st.multiselect("ID columns", df.columns)
-        value_vars = st.multiselect('Value columns', df.columns)
+    id_vars = st.multiselect("ID columns", df.columns)
+    value_vars = st.multiselect('Value columns', df.columns)
     if id_vars and value_vars:
         df_unpivot = pd.melt(df, id_vars=id_vars, value_vars=value_vars)
         st.write('Unpivoted')
