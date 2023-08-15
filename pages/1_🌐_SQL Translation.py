@@ -18,7 +18,7 @@ with st.form(key='input_form'):
         "Choose original sql dialect:",
         dialects.keys()
             )
-    destination = st.selectbox("Choose dialect to translate to:", dialects.keys())
+    destination = st.selectbox("Choose dialect to translate to:", dialects.keys(), key=1)
 
     origin_query = st.text_area("Enter query to translate:", placeholder="Original quere goes here, only support one query at a time.", height=300)
     
