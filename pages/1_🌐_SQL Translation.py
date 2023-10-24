@@ -11,6 +11,8 @@ st.write("# SQL Translation Tool 🌐")
 dialects = {
     "Trino": "trino",
     "Spark": "spark",
+    "BigQuery": "bigquery",
+    "DuckDB": "duckdb"
 }
 
 with st.form(key='input_form'):
